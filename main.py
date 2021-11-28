@@ -91,9 +91,10 @@ execute_performance(i_up_down_hands) # pos 2
 execute_performance(i_head_flex) #pos 3
 execute_performance(mandatoryPos[4]) # m_StandZero M
 execute_performance(i_ext_clap) # pos 4
-execute_performance(i_arm_dance) 
+execute_performance(i_arm_dance) # balla con le mani
 execute_performance(mandatoryPos[1]) #m_Sit M
 execute_performance(i_sit_dance) #pos_5
+execute_performance(mandatoryPos[3]) # m_Stand M
 
 '''
 execute_performance(i_start)
