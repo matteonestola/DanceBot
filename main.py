@@ -8,7 +8,7 @@ import numpy as np
 import i_one_foot_hand_up
 from naoqi import ALProxy
 import m_Sit, m_SitRelax, m_Stand, m_StandInit, m_StandZero, m_Crouch
-import i_clap, i_disco, i_macarena, i_blow, i_blow_kisses, i_sprinkler, i_the_robot_2, i_GangamStyle, i_thriller, i_arm_dance, i_hips
+import i_clap, i_disco, i_macarena, i_blow, i_blow_kisses, i_sprinkler, i_the_robot_2, i_GangamStyle, i_thriller, i_arm_dance, i_hips, i_wave_stand_up
 import i_start, i_up_down_hands, i_head_flex, i_ext_clap, i_sit_dance
 '''
 import o_Arms_opening, o_Union_arms,o_Right_arm,o_Diagonal_right,o_Diagonal_left,o_Move_forward,o_Move_backward,o_Double_movement,o_Rotation_handgun_object
@@ -19,7 +19,7 @@ robotIP = "127.0.0.1"
 port = 38019
 
 mandatoryPos = [m_StandInit, m_Sit, m_SitRelax, m_Stand, m_StandZero, m_Crouch]
-intermediatePos = [i_clap, i_disco, i_macarena, i_blow, i_blow_kisses, i_sprinkler, i_the_robot_2, i_GangamStyle, i_thriller, i_arm_dance, i_hips]
+intermediatePos = [i_clap, i_disco, i_macarena, i_blow, i_blow_kisses, i_sprinkler, i_the_robot_2, i_GangamStyle, i_thriller, i_arm_dance, i_hips, i_wave_stand_up]
 
 def execute_performance(x):
     try:
