@@ -8,7 +8,7 @@ import numpy as np
 
 from naoqi import ALProxy
 import m_Sit, m_SitRelax, m_Stand, m_StandInit, m_StandZero, m_Crouch
-import i_clap, i_disco, i_macarena, i_blow, i_blow_kisses, i_sprinkler, i_the_robot_2, i_GangamStyle, i_thriller, i_arm_dance
+import i_clap, i_disco, i_macarena, i_blow, i_blow_kisses, i_sprinkler, i_the_robot_2, i_GangamStyle, i_thriller, i_arm_dance, i_hips
 import i_start, i_up_down_hands, i_head_flex, i_ext_clap, i_sit_dance
 '''
 import o_Arms_opening, o_Union_arms,o_Right_arm,o_Diagonal_right,o_Diagonal_left,o_Move_forward,o_Move_backward,o_Double_movement,o_Rotation_handgun_object
@@ -16,10 +16,10 @@ import testa_indietro ,testa_avanti,floss_0,floss_1,o_clap,dub_2 , dub
 
 '''
 robotIP = "127.0.0.1"
-port = 39903
+port = 38019
 
 mandatoryPos = [m_StandInit, m_Sit, m_SitRelax, m_Stand, m_StandZero, m_Crouch]
-intermediatePos = [i_clap, i_disco, i_macarena, i_blow, i_blow_kisses, i_sprinkler, i_the_robot_2, i_GangamStyle, i_thriller, i_arm_dance]
+intermediatePos = [i_clap, i_disco, i_macarena, i_blow, i_blow_kisses, i_sprinkler, i_the_robot_2, i_GangamStyle, i_thriller, i_arm_dance, i_hips]
 
 def execute_performance(x):
     try:
@@ -74,7 +74,6 @@ def name_pos(s):
 
 
 def mainFunctionToRun():
-
     for i in intermediatePos:
 
         Nao_say(name_pos(str(i)))
@@ -82,7 +81,7 @@ def mainFunctionToRun():
         execute_performance(mandatoryPos[0])
 
 
-#mainFunctionToRun()
+mainFunctionToRun()
 '''
 SEQUENZA BALLO
 execute_performance(mandatoryPos[0]) # m_StandInit M
