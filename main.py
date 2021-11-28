@@ -5,7 +5,7 @@ import math
 import time
 import numpy as np
 
-
+import i_one_foot_hand_up
 from naoqi import ALProxy
 import m_Sit, m_SitRelax, m_Stand, m_StandInit, m_StandZero, m_Crouch
 import i_clap, i_disco, i_macarena, i_blow, i_blow_kisses, i_sprinkler, i_the_robot_2, i_GangamStyle, i_thriller, i_arm_dance, i_hips
@@ -94,9 +94,9 @@ execute_performance(i_arm_dance) # balla con le mani
 execute_performance(mandatoryPos[1]) #m_Sit M
 execute_performance(i_sit_dance) #pos_5
 execute_performance(mandatoryPos[3]) # m_Stand M
-
+execute_performance(i_one_foot_hand_up) # pos_6
 '''
-execute_performance(i_start)
+
 
 
 
