@@ -6,17 +6,23 @@ import time
 import numpy as np
 
 
+
+
+import i_one_foot_hand_up
+
+
 from naoqi import ALProxy
 import m_Sit, m_SitRelax, m_Stand, m_StandInit, m_StandZero, m_Crouch
 import i_clap, i_disco, i_macarena, i_blow, i_blow_kisses, i_sprinkler, i_the_robot_2, i_GangamStyle, i_thriller, i_arm_dance
 import i_start, i_up_down_hands, i_head_flex, i_ext_clap, i_sit_dance
+
 '''
 import o_Arms_opening, o_Union_arms,o_Right_arm,o_Diagonal_right,o_Diagonal_left,o_Move_forward,o_Move_backward,o_Double_movement,o_Rotation_handgun_object
 import testa_indietro ,testa_avanti,floss_0,floss_1,o_clap,dub_2 , dub
 
 '''
 robotIP = "127.0.0.1"
-port = 39903
+port = 38103
 
 mandatoryPos = [m_StandInit, m_Sit, m_SitRelax, m_Stand, m_StandZero, m_Crouch]
 intermediatePos = [i_clap, i_disco, i_macarena, i_blow, i_blow_kisses, i_sprinkler, i_the_robot_2, i_GangamStyle, i_thriller, i_arm_dance]
@@ -72,6 +78,14 @@ def name_pos(s):
     return s.split('positions/')[1].split('.pyc')[0]
 
 
+def t_def(start, n_value, step): # fornisce una lista di tempi per modificare i file dei movimenti
+    L=list()
+    x = float(start)
+    for i in range(0, n_value):
+        L.append(round(x, 1))
+        x = x + step
+    return L
+
 
 def mainFunctionToRun():
 
@@ -95,9 +109,22 @@ execute_performance(i_arm_dance) # balla con le mani
 execute_performance(mandatoryPos[1]) #m_Sit M
 execute_performance(i_sit_dance) #pos_5
 execute_performance(mandatoryPos[3]) # m_Stand M
+execute_performance(i_one_foot_hand_up) # pos_6
+
+
+
 
 '''
-execute_performance(i_start)
+execute_performance(i_arm_dance)
+
+
+
+
+
+
+
+
+
 
 
 
