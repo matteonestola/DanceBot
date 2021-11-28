@@ -9,7 +9,7 @@ import numpy as np
 from naoqi import ALProxy
 import m_Sit, m_SitRelax, m_Stand, m_StandInit, m_StandZero, m_Crouch
 import i_clap, i_disco, i_macarena, i_blow, i_blow_kisses, i_sprinkler, i_the_robot_2, i_GangamStyle, i_thriller, i_arm_dance
-import i_start, i_up_down_hands, i_head_flex
+import i_start, i_up_down_hands, i_head_flex, i_ext_clap, i_sit_dance
 '''
 import o_Arms_opening, o_Union_arms,o_Right_arm,o_Diagonal_right,o_Diagonal_left,o_Move_forward,o_Move_backward,o_Double_movement,o_Rotation_handgun_object
 import testa_indietro ,testa_avanti,floss_0,floss_1,o_clap,dub_2 , dub
@@ -84,16 +84,19 @@ def mainFunctionToRun():
 
 #mainFunctionToRun()
 '''
-execute_performance(mandatoryPos[0])
-execute_performance(i_start)
-execute_performance(i_up_down_hands)
-execute_performance(i_head_flex) 
-execute_performance(mandatoryPos[4]) # m_StandZero
-
-
+SEQUENZA BALLO
+execute_performance(mandatoryPos[0]) # m_StandInit M
+execute_performance(i_start) # start
+execute_performance(i_up_down_hands) # pos 2
+execute_performance(i_head_flex) #pos 3
+execute_performance(mandatoryPos[4]) # m_StandZero M
+execute_performance(i_ext_clap) # pos 4
+execute_performance(i_arm_dance) 
+execute_performance(mandatoryPos[1]) #m_Sit M
+execute_performance(i_sit_dance) #pos_5
 
 '''
-execute_performance(i_head_flex)
+execute_performance(i_start)
 
 
 
