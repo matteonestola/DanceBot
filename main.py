@@ -16,14 +16,14 @@ from naoqi import ALProxy
 import m_Sit, m_SitRelax, m_Stand, m_StandInit, m_StandZero, m_Crouch, m_Wipe_Forehead, m_Hello
 import i_clap, i_disco, i_macarena, i_blow, i_blow_kisses, i_sprinkler, i_the_robot_2, i_GangamStyle, i_thriller, i_arm_dance, i_hips, i_wave_stand_up
 import i_start, i_up_down_hands, i_head_flex, i_ext_clap, i_sit_dance
-import i_waving_pos, i_Right_arm, o_Diagonal_right, o_Diagonal_left,i_Union_arms, o_Arms_opening, i_Move_forward, i_Move_backward, i_Double_movement, o_Rotation_handgun_object, o_Rotation_foot_LLeg, o_Rotation_foot_RLeg
+import i_waving_pos, i_Right_arm, i_Union_arms, i_Move_forward, i_Move_backward, i_Double_movement
 '''
 import o_Arms_opening, o_Union_arms,o_Right_arm,o_Diagonal_right,o_Diagonal_left,o_Move_forward,o_Move_backward,o_Double_movement,o_Rotation_handgun_object
 import testa_indietro ,testa_avanti,floss_0,floss_1,o_clap,dub_2 , dub
 
 '''
 robotIP = "127.0.0.1"
-port = 36377
+port = 44203
 
 mandatoryPos = [m_StandInit, m_Sit, m_SitRelax, m_Stand, m_StandZero, m_Wipe_Forehead, m_Hello, m_Crouch]
 intermediatePos = [i_clap, i_disco, i_macarena, i_blow, i_blow_kisses, i_sprinkler, i_the_robot_2, i_GangamStyle, i_thriller, i_arm_dance, i_hips, i_wave_stand_up]
@@ -103,7 +103,6 @@ def mainFunctionToRun():
 #mainFunctionToRun()
 
 
-'''
 #SEQUENZA BALLO
 execute_performance(mandatoryPos[0]) # m_StandInit M
 execute_performanceBezier(i_start) #pos_1
@@ -131,36 +130,3 @@ execute_performanceBezier(i_Double_movement) # pos_13
 execute_performanceBezier(mandatoryPos[5]) # m_Wipe_ForeHead M
 execute_performanceBezier(mandatoryPos[6]) # m_Hello M
 execute_performanceBezier(mandatoryPos[7]) # m_Crouch M
-'''
-execute_performanceBezier(mandatoryPos[3])
-"""
-# copy paste from here to below and leave the two lists below. This code is used to calculate the values of position which are most important from each action file
-import numpy as np
-# randomness for the movements
-data = list()
-data.append(np.std(keys[5]))
-data.append(np.std(keys[6]))
-data.append(np.std(keys[8]))
-data.append(np.std(keys[10]))
-data.append(np.std(keys[11]))
-data.append(np.std(keys[12]))
-data.append(np.std(keys[13]))
-print("KeyValue ", data)
-keysValue = list()
-# ending positions for the moves
-tempPositionValue = list()
-tempPositionValue.append(keys[5][-1])
-tempPositionValue.append(keys[6][-1])
-tempPositionValue.append(keys[8][-1])
-tempPositionValue.append(keys[10][-1])
-tempPositionValue.append(keys[11][-1])
-tempPositionValue.append(keys[12][-1])
-tempPositionValue.append(keys[13][-1])
-print("tempPosition ", tempPositionValue)
-finalPositionValue = list()
-x = np.hstack(times)
-print("time taken", np.sum(times[0]))
-# copy paste the printed value and uncomment
-# keysValue = []
-# finalPositionValue = []
-"""
