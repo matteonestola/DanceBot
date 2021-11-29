@@ -17,7 +17,7 @@ import testa_indietro ,testa_avanti,floss_0,floss_1,o_clap,dub_2 , dub
 
 '''
 robotIP = "127.0.0.1"
-port = 36377
+port = 44203
 
 mandatoryPos = [m_StandInit, m_Sit, m_SitRelax, m_Stand, m_StandZero, m_Crouch]
 intermediatePos = [i_clap, i_disco, i_macarena, i_blow, i_blow_kisses, i_sprinkler, i_the_robot_2, i_GangamStyle, i_thriller, i_arm_dance, i_hips, i_wave_stand_up]
@@ -37,6 +37,10 @@ def execute_performanceBezier(x):
     try:
         motion = ALProxy("ALMotion", "127.0.0.1", port)
         motion.angleInterpolationBezier(x.names, x.times, x.keys)
+    except BaseException as err:
+        print(err)
+    try:
+        x.main(robotIP, port)
     except BaseException as err:
         print(err)
 
@@ -94,19 +98,16 @@ def mainFunctionToRun():
 '''
 SEQUENZA BALLO'''
 execute_performance(mandatoryPos[0]) # m_StandInit M
-print('cambio')
-execute_performance(i_start_2) # start
-'''
-execute_performance(i_up_down_hands) # pos 2
-execute_performance(i_head_flex) #pos 3
-execute_performance(mandatoryPos[4]) # m_StandZero M
-execute_performance(i_ext_clap) # pos 4
-execute_performance(i_arm_dance) # balla con le mani
-execute_performance(mandatoryPos[1]) #m_Sit M
-execute_performance(i_sit_dance) #pos_5
-execute_performance(mandatoryPos[3]) # m_Stand M
-execute_performance(i_one_foot_hand_up) # pos_6
-'''
+execute_performanceBezier(i_up_down_hands) # pos 2
+execute_performanceBezier(i_head_flex) #pos 3
+execute_performanceBezier(mandatoryPos[4]) # m_StandZero M
+execute_performanceBezier(i_ext_clap) # pos 4
+execute_performanceBezier(i_arm_dance) # balla con le mani
+execute_performanceBezier(mandatoryPos[1]) #m_Sit M
+execute_performanceBezier(i_sit_dance) #pos_5
+execute_performanceBezier(mandatoryPos[3]) # m_Stand M
+execute_performanceBezier(i_one_foot_hand_up) # pos_6
+
 
 
 
