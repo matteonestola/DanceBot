@@ -6,6 +6,7 @@ import time
 import numpy as np
 
 import i_one_foot_hand_up
+import i_start_2
 from naoqi import ALProxy
 import m_Sit, m_SitRelax, m_Stand, m_StandInit, m_StandZero, m_Crouch
 import i_clap, i_disco, i_macarena, i_blow, i_blow_kisses, i_sprinkler, i_the_robot_2, i_GangamStyle, i_thriller, i_arm_dance, i_hips, i_wave_stand_up
@@ -16,7 +17,7 @@ import testa_indietro ,testa_avanti,floss_0,floss_1,o_clap,dub_2 , dub
 
 '''
 robotIP = "127.0.0.1"
-port = 38019
+port = 36377
 
 mandatoryPos = [m_StandInit, m_Sit, m_SitRelax, m_Stand, m_StandZero, m_Crouch]
 intermediatePos = [i_clap, i_disco, i_macarena, i_blow, i_blow_kisses, i_sprinkler, i_the_robot_2, i_GangamStyle, i_thriller, i_arm_dance, i_hips, i_wave_stand_up]
@@ -71,7 +72,15 @@ def Nao_say(message):
 def name_pos(s):
     return s.split('positions/')[1].split('.pyc')[0]
 
+def t_def(start, n_value, step):
+    x = start
+    L = list()
+    L.append(x)
+    for i in range(0, n_value):
+        x = round(x + step, 2)
+        L.append(x)
 
+    return L
 
 def mainFunctionToRun():
     for i in intermediatePos:
@@ -81,11 +90,13 @@ def mainFunctionToRun():
         execute_performance(mandatoryPos[0])
 
 
-mainFunctionToRun()
+#mainFunctionToRun()
 '''
-SEQUENZA BALLO
+SEQUENZA BALLO'''
 execute_performance(mandatoryPos[0]) # m_StandInit M
-execute_performance(i_start) # start
+print('cambio')
+execute_performance(i_start_2) # start
+'''
 execute_performance(i_up_down_hands) # pos 2
 execute_performance(i_head_flex) #pos 3
 execute_performance(mandatoryPos[4]) # m_StandZero M
