@@ -11,7 +11,9 @@ import i_one_foot_hand_up
 import i_random_robot
 import i_shuffle
 import i_start_2
-#from naoPlanning import NaoProblem
+from naoPlanning import NaoProblem
+from search import *
+
 from naoqi import ALProxy
 import m_Sit, m_SitRelax, m_Stand, m_StandInit, m_StandZero, m_Crouch, m_Wipe_Forehead, m_Hello
 import i_clap, i_disco, i_macarena, i_blow, i_blow_kisses, i_sprinkler, i_the_robot_2, i_GangamStyle, i_thriller, \
@@ -173,6 +175,8 @@ mandatoryPos = [
 ]
 goalPos = ('m_Crouch', [True, None, 3.05])
 
+# ('name_of_the_MOVE', [precondition, postcondition, duration])
+
 totalMandatory = [('m_StandInit', [None, True, 0.05]),
                   ('m_Sit', [True, False, 9.1]),
                   ('m_Stand', [False, True, 11.32]),
@@ -191,25 +195,33 @@ print(intermediate_time)
 solution = list()
 
 for i in range(1, len(totalMandatory)):
-    # mossa in cui mi trovo
-    startPos = (('namePos', totalMandatory[i - 1][0]),
-                ('preconditions', totalMandatory[i - 1][1][0]),
-                ('postconditions', totalMandatory[i - 1][1][1]),
-                ('intermediate_time', intermediate_time),
-                ('move_time', totalMandatory[i - 1][1][2])
-                )
+    # i choose the actual mandatory position  and the next one mandatory position
+    startPos = totalMandatory[i - 1]
+    endPos = totalMandatory[i]
 
-    # mossa da raggiungere
-    endPos = (('namePos', totalMandatory[i][0]),
-              ('preconditions', totalMandatory[i][1][0]),
-              ('postconditions', totalMandatory[i][1][1]),
-              ('intermediate_time', 0),
-              ('move_time', totalMandatory[i][1][2])
-              )
+    moveName = (startPos[0],)  # extract the name of the current move
+    # extract the preconoitions and the postconditions
+    postcond_initial = startPos[1][1]  # if the nao robot is standing as a postcondition of the starting position
+    prec_end = endPos[1][0]  # if the nao robot  is standing as a precondition of the ending position
 
-    moveProblem = NaoProblem(startPos, endPos, intermediatePos, solution)
+    # stato della mossa in cui mi trovo
+    state_current = (('namePos', moveName),
+                     ('isStanding', postcond_initial),
+                     ('intermediate_time', intermediate_time),
+                     ('moves_done', 0),
+                     )
 
+    # stato della mossa da raggiungere
+    goal_state = (('isStanding', prec_end),
+                  ('moves_done', 5),
+                  ('intermediate_time', 0),
+                  )
 
+    moveProblem = NaoProblem(state_current, goal_state, intermediatePos, solution)
+    cur_solution = iterative_deepening_search(moveProblem)
+    if cur_solution is None:
+        raise RuntimeError('Step {i} - no solution was found!' % i)
+    '''DA PROSEGUIRE !!!!'''
 
 def mainFunctionToRun():
     # SEQUENZA BALLO
