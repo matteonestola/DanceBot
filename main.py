@@ -213,7 +213,7 @@ for i in range(1, len(totalMandatory)):
 
     # stato della mossa da raggiungere
     goal_state = (('isStanding', prec_end),
-                  ('moves_done', 5),
+                  ('moves_done', 3),
                   ('intermediate_time', 0),
                   )
 
@@ -221,7 +221,36 @@ for i in range(1, len(totalMandatory)):
     cur_solution = iterative_deepening_search(moveProblem)
     if cur_solution is None:
         raise RuntimeError('Step {i} - no solution was found!' % i)
-    '''DA PROSEGUIRE !!!!'''
+    cur_solution_dict = dict()
+    for a in cur_solution.state:
+        len_a = len(a)
+        if len_a < 2:
+            continue
+        key = a[0]
+        if len_a > 2:
+            value = a[1:]
+        else:
+            value = a[1]
+        if key not in cur_solution.state:
+            cur_solution.state[key] = value
+        cur_choreography = cur_solution_dict['choreography']
+        print("Step {i}: \t" + ", ".join(cur_choreography))
+        solution += cur_choreography
+
+solution += (goalPos[0],)
+state_dict = dict()
+for a in cur_solution.state:
+    len_a = len(a)
+    if len_a < 2:
+        continue
+    key = a[0]
+    if len_a > 2:
+        value = a[1:]
+    else:
+        value = a[1]
+    if key not in cur_solution.state:
+        cur_solution.state[key] = value
+print(solution)
 
 def mainFunctionToRun():
     # SEQUENZA BALLO
