@@ -12,7 +12,7 @@ import i_random_robot
 import i_shuffle
 import i_start_2
 from naoPlanning import NaoProblem
-from search import *
+from searchNAO import *
 
 from naoqi import ALProxy
 import m_Sit, m_SitRelax, m_Stand, m_StandInit, m_StandZero, m_Crouch, m_Wipe_Forehead, m_Hello

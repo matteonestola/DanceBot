@@ -2,14 +2,14 @@
 
 import bisect
 import collections
-import collections.abc
+#import collections.abc
 import functools
 import heapq
 import operator
 import os.path
 import random
 from itertools import chain, combinations
-from statistics import mean
+#from statistics import mean
 
 import numpy as np
 
@@ -89,11 +89,11 @@ def power_set(iterable):
     s = list(iterable)
     return list(chain.from_iterable(combinations(s, r) for r in range(len(s) + 1)))[1:]
 
-
+'''
 def extend(s, var, val):
     """Copy dict s and extend it by setting var to val; return copy."""
     return {**s, var: val}
-
+'''
 
 def flatten(seqs):
     return sum(seqs, [])
@@ -637,14 +637,14 @@ def symbols(names):
     """Return a tuple of Symbols; names is a comma/whitespace delimited str."""
     return tuple(Symbol(name) for name in names.replace(',', ' ').split())
 
-
+'''
 def subexpressions(x):
     """Yield the subexpressions of an Expression (including x itself)."""
     yield x
     if isinstance(x, Expr):
         for arg in x.args:
             yield from subexpressions(arg)
-
+'''
 
 def arity(expression):
     """The number of sub-expressions in this expression."""

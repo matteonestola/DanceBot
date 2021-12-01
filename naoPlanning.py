@@ -1,6 +1,5 @@
 import random
-from search import Problem
-#from utils import from_state_to_dict, entropy
+from searchNAO import Problem
 
 
 class NaoProblem(Problem):
@@ -11,8 +10,8 @@ class NaoProblem(Problem):
         self.intermediatePos = intermediatePos
         self.solution = solution
 
-
-    def checkMove(self, state, next_move_name, next_move):  #  next_move is the list which contains preconditions, postconditions, duration
+    def checkMove(self, state, next_move_name,
+                  next_move):  # next_move is the list which contains preconditions, postconditions, duration
         # Here we exclude some moves from the available ones.
 
         state_dict = dict()
@@ -28,10 +27,8 @@ class NaoProblem(Problem):
             if key not in state_dict:
                 state_dict[key] = value
 
-
-
         #  Check if there is enough time to complete the next_move
-        if state_dict['intermediate_time'] < next_move[2]:  #  move[2] is the duration of the next_move
+        if state_dict['intermediate_time'] < next_move[2]:  # move[2] is the duration of the next_move
             return False
 
         # Check if the preconditions of the next_move are respected in the current state
@@ -109,7 +106,7 @@ class NaoProblem(Problem):
             if key not in state_dict:
                 state_dict[key] = value
 
-        goal_dict = dict() # (self.goal)
+        goal_dict = dict()  # (self.goal)
         for a in self.goal:
             len_a = len(a)
             if len_a < 2:
@@ -124,7 +121,7 @@ class NaoProblem(Problem):
 
         goal_remaining_time = goal_dict['intermediate_time']
         a = goal_remaining_time
-        b = goal_remaining_time + 1 # 1 is a threshold
+        b = goal_remaining_time + 1  # 1 is a threshold
 
         # Here we test all the existing constraints
         time_constraint = (a <= state_dict['intermediate_time'] <= b)
